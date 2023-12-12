@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_add_room"
+    >
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.chatapp.ui.addroom.AddRoomViewModel" />
+    </data>
+   <androidx.cardview.widget.CardView
+       android:layout_marginTop="60dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:cardElevation="0dp"
+       >
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:padding="20dp">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/create_a_new_room"
+               android:textSize="30sp"
+               android:textColor="@color/black"
+               android:layout_gravity="center_horizontal"
+               />
+           <ImageView
+               android:layout_width="200dp"
+               android:layout_height="150dp"
+               android:layout_gravity="center_horizontal"
+               android:src="@drawable/add_room"/>
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/Room_name_layout"
+               android:layout_width="match_parent"
+               app:Error="@{vm.roomNameError}"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="18dp"
+               android:textAlignment="viewStart"
+               >
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/Room_name_editText"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:background="@color/transparent"
+                   android:text="@={vm.roomNameText}"
+                   android:hint="Room Name"
+                   android:inputType="textEmailAddress"
+                   />
+           </com.google.android.material.textfield.TextInputLayout>
+           <Spinner
+               android:id="@+id/cat_spinner"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+
+               />
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/Room_Desc_layout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="18dp"
+               android:textAlignment="viewStart"
+               app:Error="@{vm.roomDescriptionError}"
+               >
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/Room_Desc_EditText"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:background="@color/transparent"
+                   android:text="@={vm.roomDescriptionText}"
+                   android:hint="Room Description"
+                   android:lines="5"
+                   android:gravity="start"
+                   />
+           </com.google.android.material.textfield.TextInputLayout>
+           <com.google.android.material.button.MaterialButton
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:backgroundTint="@color/blue"
+               android:text="Create"
+               android:textAllCaps="false"
+               android:textSize="24sp"
+               android:onClick="@{()->vm.createRoom()}"
+               />
+       </LinearLayout>
+   </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="vm"
+            type="com.example.chatapp.ui.sign_in.SignInViewModel" />
+        <import type="android.view.View"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".ui.sign_in.SignIn"
+        app:elevation="0dp"
+        android:padding="12dp"
+        tools:showIn="@layout/activity_sign_in">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="190dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/guideline">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Email_Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                app:Error="@{vm.emailError}"
+                android:textAlignment="viewStart"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Email_EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:hint="Please Enter Your Email"
+                    android:inputType="textEmailAddress"
+                    android:text="@={vm.email}"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Password_Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                android:textAlignment="viewStart"
+                app:Error="@{vm.passwordError}">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Password_EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:hint="Please Enter Your Password"
+                    android:inputType="textPassword"
+                    android:text="@={vm.password}"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/dontHaveAccount_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have account?"
+                android:textSize="20sp"
+                android:layout_marginBottom="18dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/sing_up_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#339AEE"
+                android:padding="16dp"
+                android:onClick="@{()->vm.singIn()}">
+
+                <TextView
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sign In"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:id="@+id/button_text" />
+
+                <ImageView
+                    android:id="@+id/buttton_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_next"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="@{vm.isLoading()?View.GONE:View.VISIBLE}"
+                    />
+                <ProgressBar
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:indeterminateTint="@color/white"
+                    android:visibility="@{vm.isLoading()?View.VISIBLE:View.GONE}"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

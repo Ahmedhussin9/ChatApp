@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ChatApp</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="mini_whatsapp">Mini WhatsApp</string>
+    <string name="create_a_new_room">Create a new Room</string>
+    <string name="have_fun">Have Fun</string>
+</resources>
